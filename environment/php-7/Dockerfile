@@ -1,6 +1,6 @@
 FROM php:7.2.2-fpm
 
-LABEL maintainer="Ronie Herbert Neubauer <ronie.neubauer@madeiramadeira.com.br>"
+LABEL maintainer="Thiago Faino <thiagofaino@gmail.com>"
 
 RUN apt-get update \
     && apt-get upgrade -y \
