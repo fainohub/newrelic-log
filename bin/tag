@@ -1,0 +1,5 @@
+TAG=deploy-`date +%Y-%m-%d-%H.%M`
+
+git pull origin master
+git tag $TAG -a -m $TAG;
+git push --tag

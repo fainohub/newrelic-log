@@ -1,0 +1,74 @@
+App\Domain\Entity\User:
+    type: entity
+    table: user
+    repositoryClass: App\Infrastructure\Persistence\Doctrine\Repository\DoctrineUserRepository
+    id:
+        userId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                comment: 'ID do usuário no sistema'
+            id: true
+            column: user_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+                comment: 'Nome do usuário'
+        email:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+                comment: 'E-mail do usuário'
+        password:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+                comment: 'Senha do usuário'
+        status:
+            type: boolean
+            nullable: false
+            options:
+                comment: 'Status desta permissão - 1 = Ativa, 0 = Inativa'
+                default: '1'
+        createdAt:
+            type: datetime
+            nullable: false
+            options:
+                comment: 'Data e hora de inserção do registro'
+                default: CURRENT_TIMESTAMP
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: false
+            options:
+                comment: 'Data e hora de atualização do registro'
+                default: CURRENT_TIMESTAMP
+            column: updated_at
+    manyToMany:
+        roles:
+            targetEntity: App\Domain\Entity\AccessRole
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: user
+            joinTable:
+                name: access_user_roles
+                joinColumns:
+                    - name: user_id
+                      referencedColumnName: user_id
+                inverseJoinColumns:
+                    - name: access_role_id
+                      referencedColumnName: access_role_id
+            orderBy: null
+    lifecycleCallbacks: {  }

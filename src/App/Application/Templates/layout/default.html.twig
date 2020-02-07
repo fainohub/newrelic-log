@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Obelix{% endblock %} - MadeiraMadeira</title>
+
+    <!-- default Link files -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="{{ asset('dist/vendor/css/default.css') }}" rel="stylesheet" type="text/css">
+    <!-- /default Link files -->
+
+    {% block styles %}{% endblock %}
+
+    <script type="text/javascript">
+        const ROUTE_NAME = '{{ routeName }}';
+    </script>
+
+    <!-- imports JS files -->
+    {% block scripts %}{% endblock %}
+    <!-- /imports JS files -->
+
+</head>
+<body>
+
+<header id="header">
+    <div id="site-header" class="container-fluid main-nav is-logged">
+        <div class="container">
+            <div class="row">
+                <div class="logo">
+                    <a href="/" title="MadeiraMadeira - O Maior Home Center da Internet">
+                        <img src="{{ asset('dist/vendor/images/logo.svg') }}" title="MadeiraMadeira - O Maior Home Center da Internet" />
+                    </a></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="page-content">
+    <div class="content-wrapper">
+        {% block content %}{% endblock %}
+    </div>
+</div>
+{% block footer_scripts %}{% endblock %}
+</body>
+</html>
